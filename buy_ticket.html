@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Купить билет в галерею</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        select,
+        input,
+        button {
+            width: 100%;
+            margin: 10px 0;
+            padding: 8px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .error {
+            color: red;
+        }
+
+        .success {
+            color: green;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+
+<body>
+    <h1>Выберите выставку</h1>
+    <select id="exhibitionSelect"></select>
+
+    <h2>Ваши данные</h2>
+    <input type="text" id="firstName" placeholder="Имя" required>
+    <input type="text" id="lastName" placeholder="Фамилия" required>
+    <input type="email" id="email" placeholder="Email" required>
+    <input type="tel" id="phone" placeholder="Телефон в формате +7 (999) 123-45-67" required>
+
+    <button id="buyBtn">Купить билет</button>
+    <div id="message"></div>
+
+    <script>
+        const supabaseUrl = 'https://lozngvutlauohspvivje.supabase.co';
+        const supabaseKey = 'sb_publishable_3y5gXVU2c_xzdCNKEeD7kg_aH_Tg-xZ';
+        const supabaseClient = window.supabase.createClient(supabaseUrl, supabaseKey);
+
+        async function loadExhibitions() {
+            const { data, error } = await supabaseClient
+                .from('current_exhibitions')
+                .select('id, exhibition_name');
+            if (error) {
+                console.error('Ошибка загрузки выставок:', error);
+                document.getElementById('message').innerHTML = '<p class="error">Не удалось загрузить выставки. Проверьте консоль.</p>';
+                return;
+            }
+            const select = document.getElementById('exhibitionSelect');
+            select.innerHTML = '';
+            data.forEach(ex => {
+                const option = document.createElement('option');
+                option.value = ex.id;
+                option.textContent = ex.exhibition_name;
+                select.appendChild(option);
+            });
+        }
+        async function findOrCreateVisitor(firstName, lastName, email, phone) {
+            let { data: visitors, error } = await supabaseClient
+                .from('Visitors')
+                .select('id')
+                .or(`email.eq.${email},phone.eq.${phone}`)
+                .limit(1);
+            if (error) throw error;
+
+            if (visitors && visitors.length > 0) {
+                return visitors[0].id;
+            }
+
+            const { data: newVisitor, error: insertError } = await supabaseClient
+                .from('Visitors')
+                .insert([{
+                    first_name: firstName,
+                    last_name: lastName,
+                    email: email,
+                    phone: phone
+                }])
+                .select();
+            if (insertError) throw insertError;
+            return newVisitor[0].id;
+        }
+
+        async function buyTicket(exhibitionId, visitorId) {
+
+            const price = 500;
+
+            const { error } = await supabaseClient
+                .from('Tickets')
+                .insert([{
+                    exhibition_id: exhibitionId,
+                    visitor_id: visitorId,
+                    purchase_date: new Date().toISOString().slice(0, 10),
+                    price: price,
+                    status: 'bought'
+                }]);
+            if (error) throw error;
+        }
+
+        document.getElementById('buyBtn').addEventListener('click', async () => {
+            const exhibitionId = document.getElementById('exhibitionSelect').value;
+            const firstName = document.getElementById('firstName').value.trim();
+            const lastName = document.getElementById('lastName').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+
+            if (!exhibitionId || !firstName || !lastName || !email || !phone) {
+                document.getElementById('message').innerHTML = '<p class="error">Заполните все поля.</p>';
+                return;
+            }
+
+            const messageDiv = document.getElementById('message');
+            messageDiv.innerHTML = '<p>Обработка...</p>';
+
+            try {
+                const { data, error } = await supabaseClient.rpc('buy_ticket', {
+                    p_first_name: firstName,
+                    p_last_name: lastName,
+                    p_email: email,
+                    p_phone: phone,
+                    p_exhibition_id: exhibitionId,
+                    p_price: 500
+                });
+
+                if (error) throw error;
+
+                if (data.success) {
+                    const ticketId = data.ticket_id;
+                    const price = data.price;
+                    messageDiv.innerHTML = `
+            <p class="success">
+                ✅ Билет успешно куплен!<br>
+                🎫 Номер билета: <strong>${ticketId}</strong><br>
+                💰 Цена: <strong>${price} руб.</strong>
+            </p>
+        `;
+                    document.getElementById('firstName').value = '';
+                    document.getElementById('lastName').value = '';
+                    document.getElementById('email').value = '';
+                    document.getElementById('phone').value = '';
+                } else {
+                    throw new Error(data.error);
+                }
+            } catch (err) {
+                console.error(err);
+                messageDiv.innerHTML = `<p class="error">❌ Ошибка: ${err.message}</p>`;
+            }
+        });
+
+        loadExhibitions();
+    </script>
+</body>
+
+</html>
