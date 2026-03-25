@@ -6,15 +6,25 @@
 ---
 
 ## Cтруктура репозитория
+```
 
 ├── buy_ticket.html
 ├── Dashboard
 │   └── main_dashboard.json
 ├── docker-compose.yml
-├── models_bd
-│   ├── conceptual_model.png
-│   ├── logical_model.png
-│   └── phys_model.ods
+├── docs
+│   ├── architecture
+│   │   ├── component.drawio
+│   │   ├── component.png
+│   │   ├── deployment.drawio
+│   │   ├── deployment.png
+│   │   ├── sequence_buy_ticket.drawio
+│   │   └── sequence_buy_ticket.png
+│   └── models_bd
+│       ├── conceptual_model.png
+│       ├── logical_model.png
+│       └── phys_model.ods
+├── README.md
 ├── scripts
 │   ├── analitic_scripts
 │   │   ├── avg_tickets.sql
@@ -51,8 +61,8 @@
 │   └── views
 │       ├── current_exhibitions.sql
 │       └── visitors_with_tickets_activity.sql
-└── README.md
-
+└── test_system.mp4
+```
 
 ##  Структура базы данных
 
@@ -182,12 +192,12 @@ Docker используется для развёртывания проекта
 ### Концептуальная модель
 Описывает основные сущности и связи без привязки к конкретной СУБД.  
 Сущности: Посетитель, Билет, Филиал, Экспонат, Выставка, Художник.  
-Диаграмма: ![Концептуальная модель базы данных](models_bd/conceptual_model.png)
+Диаграмма: ![Концептуальная модель базы данных](docs/models_bd/conceptual_model.png)
 
 ### Логическая модель
 Определяет атрибуты сущностей, первичные и внешние ключи, типы данных.  
 Соответствует логической схеме, приведённой в начале документации.  
-Диаграмма: ![Логическая модель базы данных](models/logical_model.png)
+Диаграмма: ![Логическая модель базы данных](docs/models/logical_model.png)
 
 ### Физическая модель
 Описание содержания таблиц, допустимых значений
