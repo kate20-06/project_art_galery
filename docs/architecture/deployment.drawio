@@ -1,0 +1,46 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:148.0) Gecko/20100101 Firefox/148.0" version="29.6.6">
+  <diagram name="Страница-1" id="u5MjBxwlBtDXqn4gdTbY">
+    <mxGraphModel dx="989" dy="579" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="node_client" parent="1" style="shape=cube;whiteSpace=wrap;html=1;boundedLbl=1;spacingLeft=10;align=center;verticalAlign=top;fontStyle=1" value="Клиентский компьютер" vertex="1">
+          <mxGeometry height="160" width="220" x="60" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="comp_browser" parent="node_client" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&lt;div&gt;Браузер&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="140" x="40" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="node_web" parent="1" style="shape=cube;whiteSpace=wrap;html=1;boundedLbl=1;spacingLeft=10;align=center;verticalAlign=top;fontStyle=1" value="Сервер веб-интерфейса" vertex="1">
+          <mxGeometry height="160" width="220" x="500" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="comp_static" parent="node_web" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="Статические файлы (buy_ticket.html)" vertex="1">
+          <mxGeometry height="60" width="140" x="40" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="node_cloud" parent="1" style="shape=cube;whiteSpace=wrap;html=1;boundedLbl=1;spacingLeft=10;align=center;verticalAlign=top;fontStyle=1" value="Облако" vertex="1">
+          <mxGeometry height="180" width="220" x="500" y="400" as="geometry" />
+        </mxCell>
+        <mxCell id="comp_supabase" parent="node_cloud" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="&lt;b&gt;База данных Supabase&lt;/b&gt;&lt;br&gt;(PostgreSQL)" vertex="1">
+          <mxGeometry height="70" width="140" x="40" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="node_analytics" parent="1" style="shape=cube;whiteSpace=wrap;html=1;boundedLbl=1;spacingLeft=10;align=center;verticalAlign=top;fontStyle=1" value="Сервер аналитики" vertex="1">
+          <mxGeometry height="220" width="240" x="60" y="400" as="geometry" />
+        </mxCell>
+        <mxCell id="comp_docker" parent="node_analytics" style="swimlane;whiteSpace=wrap;html=1;startSize=23;fillColor=#e1d5e7;strokeColor=#9673a6;" value="Контейнер Docker" vertex="1">
+          <mxGeometry height="130" width="180" x="30" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="comp_grafana" parent="comp_docker" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" value="Grafana" vertex="1">
+          <mxGeometry height="50" width="120" x="30" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="edge1" edge="1" parent="1" source="node_client" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;labelBackgroundColor=#ffffff;" target="node_web" value="HTTPS (загрузка страницы)">
+          <mxGeometry height="50" relative="1" width="50" as="geometry" />
+        </mxCell>
+        <mxCell id="edge2" edge="1" parent="1" source="node_web" style="endArrow=none;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;labelBackgroundColor=#ffffff;" target="node_cloud" value="SQL-запросы (через интернет)">
+          <mxGeometry height="50" relative="1" width="50" as="geometry" />
+        </mxCell>
+        <mxCell id="edge3" edge="1" parent="1" source="node_analytics" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;labelBackgroundColor=#ffffff;" target="node_cloud" value="PostgreSQL подключение (5432)">
+          <mxGeometry height="50" relative="1" width="50" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

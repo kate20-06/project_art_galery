@@ -1,0 +1,100 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:148.0) Gecko/20100101 Firefox/148.0" version="29.6.6">
+  <diagram name="Страница-1" id="grNeMNTsMcOvPSBSAcNQ">
+    <mxGraphModel dx="1319" dy="772" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" parent="1" style="whiteSpace=wrap;strokeWidth=2;fillColor=none;strokeColor=black;fontColor=light-dark(#333333,#cccccc);" value="DockerContainer" vertex="1">
+          <mxGeometry height="194" width="881" x="121" y="552" as="geometry" />
+        </mxCell>
+        <mxCell id="3" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=71;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=light-dark(#eeeeee,#1f2020);strokeColor=light-dark(#999999,#cccccc);fontColor=light-dark(#333333,#cccccc);" value="&lt;&lt;component&gt;&gt;&#xa;ВебИнтерфейс" vertex="1">
+          <mxGeometry height="150" width="317" x="484" y="8" as="geometry" />
+        </mxCell>
+        <mxCell id="4" parent="3" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1">
+          <mxGeometry height="8" width="317" y="71" as="geometry" />
+        </mxCell>
+        <mxCell id="5" parent="3" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" value="Веб-интерфейс(buy_ticket.html)" vertex="1">
+          <mxGeometry height="47" width="317" y="79" as="geometry" />
+        </mxCell>
+        <mxCell id="6" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=71;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=light-dark(#eeeeee,#1f2020);strokeColor=light-dark(#999999,#cccccc);fontColor=light-dark(#333333,#cccccc);" value="&lt;&lt;component&gt;&gt;&#xa;БазаДанных" vertex="1">
+          <mxGeometry height="150" width="352" x="696" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="7" parent="6" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1">
+          <mxGeometry height="8" width="352" y="71" as="geometry" />
+        </mxCell>
+        <mxCell id="8" parent="6" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" value="База данных(PostgreSQL / Supabase)" vertex="1">
+          <mxGeometry height="47" width="352" y="79" as="geometry" />
+        </mxCell>
+        <mxCell id="9" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=68;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=light-dark(#eeeeee,#1f2020);strokeColor=light-dark(#999999,#cccccc);fontColor=light-dark(#333333,#cccccc);" value="&lt;&lt;component&gt;&gt;&#xa;Grafana" vertex="1">
+          <mxGeometry height="136" width="130" x="364" y="577" as="geometry" />
+        </mxCell>
+        <mxCell id="10" parent="9" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" value="Grafana" vertex="1">
+          <mxGeometry height="45" width="130" y="68" as="geometry" />
+        </mxCell>
+        <mxCell id="11" parent="9" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1">
+          <mxGeometry height="23" width="130" y="113" as="geometry" />
+        </mxCell>
+        <mxCell id="12" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=38;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=light-dark(#eeeeee,#1f2020);strokeColor=light-dark(#999999,#cccccc);fontColor=light-dark(#333333,#cccccc);" value="Пользователь" vertex="1">
+          <mxGeometry height="84" width="137" x="364" y="313" as="geometry" />
+        </mxCell>
+        <mxCell id="13" parent="12" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1">
+          <mxGeometry height="19" width="137" y="57" as="geometry" />
+        </mxCell>
+        <mxCell id="14" parent="1" style="align=left;spacingLeft=4;fillColor=hsl(180, 1.5873015873%, 28.3529411765%);strokeColor=hsl(180, 0%, 18.3529411765%);fontColor=light-dark(#333333,#000000);" value="Grafana запущена в Docker-контейнере" vertex="1">
+          <mxGeometry height="36" width="306" x="8" y="337" as="geometry" />
+        </mxCell>
+        <mxCell id="15" edge="1" parent="1" source="14" style="curved=1;dashed=1;dashPattern=2 3;startArrow=none;endArrow=none;fillColor=none;;exitX=0.5;exitY=1;entryX=0;entryY=0.38;" target="9" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="161" y="552" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="16" edge="1" parent="1" source="12" style="curved=1;startArrow=none;endArrow=open;endSize=12;exitX=0.75;exitY=0;entryX=0.33;entryY=1;" target="3" value="HTTP-запросы (GET, POST)">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="542" y="219" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="17" edge="1" parent="1" source="3" style="curved=1;startArrow=none;endArrow=open;endSize=12;exitX=0;exitY=0.95;entryX=0.25;entryY=0;" target="12" value="HTTP-ответы (HTML, JSON)">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="322" y="219" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="18" edge="1" parent="1" source="3" style="curved=1;startArrow=none;endArrow=open;endSize=12;exitX=0.71;exitY=1;entryX=0.33;entryY=0;" target="6" value="SQL-запросы (SELECT из current_exhibition, вызов buy_ticket)">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="762" y="219" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="19" edge="1" parent="1" source="6" style="curved=1;startArrow=none;endArrow=open;endSize=12;exitX=0.67;exitY=0;entryX=1;entryY=0.92;" target="3" value="Результаты запросов (данные, статус)">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="982" y="219" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="20" edge="1" parent="1" source="9" style="curved=1;startArrow=none;endArrow=open;endSize=12;exitX=1;exitY=0.4;entryX=0.67;entryY=1;" target="6" value="Подключение PostgreSQL, SQL-запросы для дашбордов">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="982" y="552" />
+              <mxPoint x="982" y="491" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="21" edge="1" parent="1" source="6" style="curved=1;startArrow=none;endArrow=open;endSize=12;exitX=0.04;exitY=1;entryX=0.73;entryY=0;" target="9" value="Данные для визуализации">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="576" y="491" />
+              <mxPoint x="576" y="552" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
