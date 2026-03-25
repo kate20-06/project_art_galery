@@ -1,0 +1,1 @@
+create schema Art_Galery;
