@@ -15,13 +15,11 @@ DECLARE
     v_ticket_id INTEGER;
     v_result JSONB;
 BEGIN
-    -- Найти существующего посетителя по email или телефону
     SELECT id INTO v_visitor_id
     FROM art_galery.Visitors
     WHERE email = p_email OR phone = p_phone
     LIMIT 1;
 
-    -- Если не найден – создать
     IF v_visitor_id IS NULL THEN
         INSERT INTO art_galery.Visitors (first_name, last_name, email, phone)
         VALUES (p_first_name, p_last_name, p_email, p_phone)
