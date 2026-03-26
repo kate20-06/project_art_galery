@@ -26,12 +26,10 @@ BEGIN
         RETURNING id INTO v_visitor_id;
     END IF;
 
-    -- Вставить билет и получить его ID
     INSERT INTO art_galery.Tickets (exhibition_id, visitor_id, purchase_date, price, status)
     VALUES (p_exhibition_id, v_visitor_id, CURRENT_DATE, p_price, 'bought')
     RETURNING id INTO v_ticket_id;
 
-    -- Формируем JSON с нужными полями
     v_result := jsonb_build_object(
         'success', true,
         'ticket_id', v_ticket_id,
